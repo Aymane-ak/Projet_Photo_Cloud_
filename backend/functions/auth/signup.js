@@ -1,16 +1,26 @@
-const bcrypt = require("bcryptjs");
 const { putUser } = require("../../models/userModel");
+const { success, error } = require("../../utils/response");
+const bcrypt = require("bcryptjs");
 
 exports.handler = async (event) => {
-    const body = JSON.parse(event.body);
-    const { email, password } = body;
+    try {
+        const body = JSON.parse(event.body);
+        const { email, password } = body;
 
-    const hashed = bcrypt.hashSync(password, 10);
+        if (!email || !password) {
+            return error("Email & password required", 400);
+        }
 
-    await putUser({ email, password: hashed });
+        const hashedPassword = await bcrypt.hash(password, 10);
 
-    return {
-        statusCode: 200,
-        body: JSON.stringify({ message: "User created" })
-    };
+        await putUser({
+            email,
+            password: hashedPassword,
+        });
+
+        return success({ message: "User registered" }, 201);
+    } catch (err) {
+        console.error(err);
+        return error("Signup failed", 500);
+    }
 };

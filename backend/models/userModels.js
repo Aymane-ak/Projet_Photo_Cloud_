@@ -1,9 +1,23 @@
-const { dynamo } = require("../utils/dynamo");
+const { ddb } = require("../utils/dynamo");
+
 const TABLE = "Users";
 
-exports.putUser = async (user) => {
-    return dynamo.put({
-        TableName: TABLE,
-        Item: user
-    }).promise();
+module.exports.putUser = async (user) => {
+    return ddb
+        .put({
+            TableName: TABLE,
+            Item: user,
+        })
+        .promise();
+};
+
+module.exports.getUser = async (email) => {
+    const res = await ddb
+        .get({
+            TableName: TABLE,
+            Key: { email },
+        })
+        .promise();
+
+    return res.Item || null;
 };
