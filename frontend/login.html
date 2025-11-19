@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="js/auth.js"></script>
+</head>
+
+<body>
+<h1>Connexion</h1>
+
+<form id="loginForm">
+    <input type="text" id="username" placeholder="Nom d’utilisateur" required>
+    <input type="password" id="password" placeholder="Mot de passe" required>
+    <button type="submit">Se connecter</button>
+</form>
+
+<script type="module">
+    import { login } from "./js/auth.js";
+
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        try {
+            await login(username, password);
+            alert("Connecté !");
+            window.location.href = "gallery.html";
+        } catch (err) {
+            alert(err.message);
+        }
+    });
+</script>
+</body>
+</html>

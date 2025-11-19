@@ -1,18 +1,68 @@
-# Default ignored files
+# =========================================
+# IDE / INTELLIJ / JETBRAINS
+# =========================================
+/.idea/
+*.iml
 /shelf/
 /workspace.xml
-# Editor-based HTTP Client requests
 /httpRequests/
-# Environment-dependent path to Maven home directory
-/mavenHomeManager.xml
-# Datasource local storage ignored files
+mavenHomeManager.xml
 /dataSources/
 /dataSources.local.xml
 
+# =========================================
+# NODE / BACKEND
+# =========================================
+backend/node_modules/
+node_modules/
+backend/functions/**/*.zip
+backend/*.log
 
-/backend/node_modules/
+# ENV Files
+.env
+.env.local
+.env.*.local
 
-# IntelliJ / JetBrains
-/.idea/
-*.iml
+# JWT Keys
+*.key
+*.pem
 
+# =========================================
+# FRONTEND
+# =========================================
+frontend/node_modules/
+frontend/dist/
+frontend/.cache/
+
+# =========================================
+# TERRAFORM
+# =========================================
+*.tfstate
+*.tfstate.*
+crash.log
+.terraform/
+.terraform.lock.hcl
+
+# =========================================
+# LOCALSTACK
+# =========================================
+localstack/
+tmp/
+
+# =========================================
+# AWS CREDENTIALS (NE JAMAIS COMMIT)
+# =========================================
+.aws/
+credentials
+config
+
+# =========================================
+# OS / SYSTEM FILES
+# =========================================
+.DS_Store
+Thumbs.db
+
+# =========================================
+# EDITOR SETTINGS
+# =========================================
+.vscode/
