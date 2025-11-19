@@ -10,7 +10,7 @@
 /dataSources.local.xml
 
 
-/node_modules/
+/backend/node_modules/
 
 # IntelliJ / JetBrains
 /.idea/
