@@ -29,14 +29,15 @@ module "sqs" {
 
 
 module "lambda" {
-  source       = "./modules/lambda"
-  lambda_prefix = "imageservice"
-  bucket_name   = "imagestorage"
+  source        = "./modules/lambda"
+  lambda_prefix = "auth"
+  bucket_name   = "lambda-code"
 }
 
-module "apigw" {
-  source = "./modules/apigateway"
-  api_name = "image-api"
-  ##api_name = var.api_name
+module "apigateway" {
+  source                   = "./modules/apigateway"
+  api_name                 = "MyAPI"
+  region                   = "us-east-1"
+  auth_signup_lambda_arn   = module.lambda.auth_signup_lambda_arn
 }
 
