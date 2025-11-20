@@ -8,5 +8,5 @@ resource "aws_lambda_function" "auth_signup" {
   handler       = "functions/auth/signup.handler"
   role          = "arn:aws:iam::000000000000:role/lambda-role"
 
-  filename      = "${path.module}/signup.zip"
+  filename      = "${path.module}/signup_v2.zip"
 }
