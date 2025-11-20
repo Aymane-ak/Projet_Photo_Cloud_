@@ -1,4 +1,4 @@
-const { putUser } = require("../../models/userModel");
+const { putUser } = require("../../models/userModels");
 const { success, error } = require("../../utils/response");
 const bcrypt = require("bcryptjs");
 
